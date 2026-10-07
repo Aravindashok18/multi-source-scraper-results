@@ -93,7 +93,8 @@
   .count { font-size: 0.84rem; color: var(--muted); margin-left: auto; }
 
   .records { min-width: 760px; }
-  .records td { word-break: break-word; }
+  .records td { overflow-wrap: break-word; }
+  .records td.num, .sources td.num, .sources td:first-child { white-space: nowrap; }
   th button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
   th[aria-sort="ascending"] button::after { content: " \2191"; }
   th[aria-sort="descending"] button::after { content: " \2193"; }
@@ -230,7 +231,7 @@
   var Q = D.quality;
   [["Prices", "£" + Q.price_min.toFixed(2) + " to £" + Q.price_max.toFixed(2) + " across " + fmt(Q.books) + " books, all numeric."],
    ["Ratings", "Only 1 to 5. Counts: " + Q.ratings.map(function (r) { return r[0] + ": " + fmt(r[1]); }).join(", ") + "."],
-   ["Empty cells", fmt(Q.books_no_description) + " books have no description and " + fmt(Q.quotes_no_tags) + " quotes have no tags. Checked on the live site: none exist there."],
+   ["Empty cells", fmt(Q.books_no_description) + " books have no description and " + fmt(Q.quotes_no_tags) + " quotes have no tags. Checked on the live site: those pages really have none."],
    ["Text", "No encoding damage and no stray whitespace in any cell."],
    ["Site totals", "books.toscrape.com reports 1,000 results; 1,000 books were collected before de-duplication."],
    ["Spot-check", "6 random books and 6 random quotes were re-read from the live pages with a separate script. All 12 matched."]]
